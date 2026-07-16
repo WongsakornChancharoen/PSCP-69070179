@@ -83,7 +83,12 @@ You may write pseudocode, a flowchart idea, or step-by-step thinking.
 Step 1: สร้าง dictionary "mixed_colors" โดยใช้ชื่อแม่สีทั้ง 3 เป็น key ในการเข้าถึง dictionary ที่ 2
     ใน dictionary ที่ 2 จะใช้ key เป็นชื่อแม่สีทั้ง 3 เหมือนกับ dictionary แรก แต่ข้อมูลจะเป็นชื่อของสีที่ถูกผสมเข้าด้วยกันแล้ว
     ประกอบด้วย Orange, Green, และ Violet และจะมีสีหนึ่งที่เป็นแม่สีเกิดจากการผสมแม่สีเดียวกัน
-    ตัวอย่าง dictionary - {"red":{"red":"Red","yellow":"Orange","blue":"Violet"}}
+    ตัวอย่าง
+        mixed_colors = {
+            "red":{"red":"Red","yellow":"Orange","blue":"Violet"},
+            "yellow": ...
+            "blue": ...
+        }
 Step 2: รับ Input 2 ครั้งแล้วเก็บไว้ในตัวแปร aColor, bColor ตามลำดับ แล้วใช้ lower ในการทำให้ตัวอักษรทั้งหมดเป็นตัวพิมพ์เล็ก
 Step 3: เช็กว่า aColor เป็น key ของ dictionary หรือไม่ ถ้าใช่ให้ดำเนินการต่อ หากไม่ให้ปริ้นคำว่า "Error"
 Step 4: เช็กว่า bColor เป็น key ของ dictionary[aColor] หรือไม่ ถ้าใช่ให้ดำเนินการต่อ หากไม่ให้ปริ้นคำว่า "Error"
