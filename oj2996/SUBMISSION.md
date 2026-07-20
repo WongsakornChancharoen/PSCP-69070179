@@ -271,13 +271,13 @@ None
 What did they help with?
 
 ```text
-
+None
 ```
 
 What did you still do by yourself?
 
 ```text
-
+Everything
 ```
 
 Did you copy any code from another person?
