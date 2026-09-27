@@ -1,6 +1,6 @@
 # To-do List:
 ## Missing Learning Logs
-### [8 remaining]
+### [5 remaining]
 - Name : [Folder] [SUBMISSION.md]
 - oj3031 V        V
 - oj3058 V        V
@@ -19,9 +19,9 @@
 - oj3357 V        V
 - oj3360 V        V
 - oj3381 V        V
-- oj3386 V        
-- oj3394 V        
-- oj3476 V        
+- oj3386 V        V
+- oj3394 V        V
+- oj3476 V        V
 - oj3477 V        
 - oj3484 V        
 - oj3536 V        
