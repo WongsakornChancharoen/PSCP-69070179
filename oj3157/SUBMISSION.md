@@ -15,13 +15,13 @@ If AI was used for this learning-log-required problem, also complete `ai_reflect
 OJ problem number/title:
 
 ```text
-3110
+3157
 ```
 
 OJ submission ID, if submitted:
 
 ```text
-579751
+591162
 ```
 
 OJ status:
@@ -33,7 +33,7 @@ Pass
 Independent time spent on this problem:
 
 ```text
-30-60 minutes
+0-15 minutes
 ```
 
 How to count this time:
@@ -58,8 +58,8 @@ Also explain the input, output, and important constraints.
 If you do not fully understand the problem yet, write what you currently understand. Your understanding may be incomplete or incorrect, but you must make a genuine attempt.
 
 ```text
-ให้หาค่าธรรมเนียมการส่งพัสดุจากเส้นทางต่างที่ระบุจาก input
-ถ้าเส้นทางที่ input ให้ไม่มีอยู่ในเส้นทางที่โจทย์กำหนดไว้จะได้ข้อความ "Error"
+โปรแกรมคำนวณแต้มโดยเริ่มที่ 0
+จะโดนบวกเพิ่ม 10 หรือหักออก 5 จำนวน n ครั้ง
 ```
 
 ---
@@ -79,15 +79,12 @@ This can be rough. It may be incomplete or different from your final solution.
 You may write pseudocode, a flowchart idea, or step-by-step thinking.
 
 ```text
-สร้าง dict ซ้อน dict โดยให้ชั้นแรกเป็นต้นทางและชั้นที่สองเป็นปลายทาง
-โดย dict ชั้นที่สองให้เก็บค่าธรรมเนียมเริ่มต้นกับค่าธรรมเนียมน้ำหนัก
-รับ input จากนั้น split แล้วเก็บไว้ในตัวแปร start (ต้นทาง), และ dest (ปลายทาง)
-รับค่าน้ำหนักพัสดุ
-จากนั้นให้เช็กว่า start เป็น key ของ dict เส้นทางชั้นแรก และเมื่อใช้ key ต้นทางเข้าไปยัง
-dict เส้นทางชั้นที่สองและ dest เป็น key ของ dict นั้น
-ถ้าถูกต้อง (เส้นทางโจทย์ระบุไว้) ให้นำค่าที่ได้จากการเข้า dict เส้นทางสองชั้นนั้น
-    มาคำนวณกับน้ำหนักของพัสดุแล้วปริ้น
-ถ้าผิด (โจทย์ไม่ได้ระบุว่ามีเส้นทางดังกล่าว) ให้ปริ้น Error
+รับค่า n
+สร้างตัวแปรเก็บแต้ม
+วนลูป n ครั้ง
+ในลูป ถ้า input = "+" ให้ แต้ม +10
+    ถ้าไม่ ให้ แต้ม -5
+ปริ้นแต้มสุดท้ายที่ได้
 ```
 
 ---
@@ -133,20 +130,22 @@ Why I chose this case:
 Input:
 
 ```text
-BKK CNX
-2
+3
++
++
++
 ```
 
 Expected output:
 
 ```text
-70.00
+30
 ```
 
 Actual output:
 
 ```text
-70.00
+30
 ```
 
 Result:
@@ -166,20 +165,24 @@ Why I chose this case:
 Input:
 
 ```text
-UBP PKT
-3.33
+5
++
++
+-
++
++
 ```
 
 Expected output:
 
 ```text
-273.10
+35
 ```
 
 Actual output:
 
 ```text
-273.10
+35
 ```
 
 Result:
@@ -193,26 +196,28 @@ Pass
 Why I chose this case:
 
 ```text
-ถ้าพัสดุไร้น้ำหนักก็ยังต้องจ่ายค่าธรรมเนียมเริ่มต้น
+คะแนนสามารถติดลบได้หรือไม่
 ```
 
 Input:
 
 ```text
-BKK PKT
-0
+3
+-
+-
+-
 ```
 
 Expected output:
 
 ```text
-25.00
+-15
 ```
 
 Actual output:
 
 ```text
-25.00
+-15
 ```
 
 Result:

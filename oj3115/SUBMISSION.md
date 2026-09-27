@@ -15,13 +15,13 @@ If AI was used for this learning-log-required problem, also complete `ai_reflect
 OJ problem number/title:
 
 ```text
-3110
+3115
 ```
 
 OJ submission ID, if submitted:
 
 ```text
-579751
+579748
 ```
 
 OJ status:
@@ -58,8 +58,8 @@ Also explain the input, output, and important constraints.
 If you do not fully understand the problem yet, write what you currently understand. Your understanding may be incomplete or incorrect, but you must make a genuine attempt.
 
 ```text
-ให้หาค่าธรรมเนียมการส่งพัสดุจากเส้นทางต่างที่ระบุจาก input
-ถ้าเส้นทางที่ input ให้ไม่มีอยู่ในเส้นทางที่โจทย์กำหนดไว้จะได้ข้อความ "Error"
+โปรแกรมเช็กว่าจากร้านทั้งหมดที่ input ระบุไว้โดยเป็นช่วงเวลาเปิดร้านของแต่ละร้าน
+ณ เวลาที่ input ระบุไว้เป็นนาทีในวันนั้น มีร้านเปิดอยู่กี่ร้าน
 ```
 
 ---
@@ -79,15 +79,18 @@ This can be rough. It may be incomplete or different from your final solution.
 You may write pseudocode, a flowchart idea, or step-by-step thinking.
 
 ```text
-สร้าง dict ซ้อน dict โดยให้ชั้นแรกเป็นต้นทางและชั้นที่สองเป็นปลายทาง
-โดย dict ชั้นที่สองให้เก็บค่าธรรมเนียมเริ่มต้นกับค่าธรรมเนียมน้ำหนัก
-รับ input จากนั้น split แล้วเก็บไว้ในตัวแปร start (ต้นทาง), และ dest (ปลายทาง)
-รับค่าน้ำหนักพัสดุ
-จากนั้นให้เช็กว่า start เป็น key ของ dict เส้นทางชั้นแรก และเมื่อใช้ key ต้นทางเข้าไปยัง
-dict เส้นทางชั้นที่สองและ dest เป็น key ของ dict นั้น
-ถ้าถูกต้อง (เส้นทางโจทย์ระบุไว้) ให้นำค่าที่ได้จากการเข้า dict เส้นทางสองชั้นนั้น
-    มาคำนวณกับน้ำหนักของพัสดุแล้วปริ้น
-ถ้าผิด (โจทย์ไม่ได้ระบุว่ามีเส้นทางดังกล่าว) ให้ปริ้น Error
+รับค่า num, check จากการ split input บรรทัดแรก
+สร้าง list บันทึกช่วงเวลาเปิดร้านของแต่ละร้าน
+วนลูป num ครั้ง
+ในลูป ให้ split input และแปลงเป็น int แล้วเก็บไว้ใน list ที่สร้าง
+รับค่าเวลาที่ต้องการจะเช็กโดยการ split input แล้วแปลงเป็น int ทั้งหมด
+วนลูป โดย i เริ่มที่ 0 จบที่ check
+สร้างตัวแปรเก็บจำนวนร้านที่เปิด ณ เวลา i
+ในลูป ให้วนลูปใน list ที่บันทึกช่วงเวลาเปิดร้าน
+    ในลูป list ให้เช็กว่า เวลา i อยู่ในช่วงเวลาที่ร้านเปิดหรือไม่
+    ถ้าใช่ ให้ +1 จำนวนร้านที่เปิด
+หลังจากจบลูป list ให้ปริ้นจำนวนร้านที่เปิดโดยไม่ขึ้นบรรทัดใหม่
+วนลูปซ้ำจนกว่า i >= check
 ```
 
 ---
@@ -133,20 +136,23 @@ Why I chose this case:
 Input:
 
 ```text
-BKK CNX
-2
+3 5
+540 1020
+600 660
+1080 1200
+600 659 660 900 1300
 ```
 
 Expected output:
 
 ```text
-70.00
+2 2 1 1 0
 ```
 
 Actual output:
 
 ```text
-70.00
+2 2 1 1 0
 ```
 
 Result:
@@ -166,20 +172,22 @@ Why I chose this case:
 Input:
 
 ```text
-UBP PKT
-3.33
+2 3
+0 720
+500 1000
+100 700 800
 ```
 
 Expected output:
 
 ```text
-273.10
+1 2 1
 ```
 
 Actual output:
 
 ```text
-273.10
+1 2 1
 ```
 
 Result:
@@ -193,26 +201,27 @@ Pass
 Why I chose this case:
 
 ```text
-ถ้าพัสดุไร้น้ำหนักก็ยังต้องจ่ายค่าธรรมเนียมเริ่มต้น
+ถ้าร้านเปิดและปิด ณ เวลาเดียวกัน = ร้านไม่เปิดเลย
 ```
 
 Input:
 
 ```text
-BKK PKT
+1 1
+0 0
 0
 ```
 
 Expected output:
 
 ```text
-25.00
+0
 ```
 
 Actual output:
 
 ```text
-25.00
+0
 ```
 
 Result:

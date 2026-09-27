@@ -15,13 +15,13 @@ If AI was used for this learning-log-required problem, also complete `ai_reflect
 OJ problem number/title:
 
 ```text
-3110
+3135
 ```
 
 OJ submission ID, if submitted:
 
 ```text
-579751
+592854
 ```
 
 OJ status:
@@ -33,7 +33,7 @@ Pass
 Independent time spent on this problem:
 
 ```text
-30-60 minutes
+1-3 hours
 ```
 
 How to count this time:
@@ -58,8 +58,9 @@ Also explain the input, output, and important constraints.
 If you do not fully understand the problem yet, write what you currently understand. Your understanding may be incomplete or incorrect, but you must make a genuine attempt.
 
 ```text
-ให้หาค่าธรรมเนียมการส่งพัสดุจากเส้นทางต่างที่ระบุจาก input
-ถ้าเส้นทางที่ input ให้ไม่มีอยู่ในเส้นทางที่โจทย์กำหนดไว้จะได้ข้อความ "Error"
+ให้หาว่าของขวัญถูกส่งต่อกี่ครั้ง โดยการส่งต่อจะหยุดก็ต่อเมื่อ
+ของขวัญถูกส่งต่อให้ขโมย (คนที่ t) หรือส่งต่อให้เจ้าของของขวัญ (คนที่ 1)
+โดยของขวัญจะถูกส่งต่อให้คนถัดไป k คน และจะวนอยู่ภายในกลุ่ม n คน
 ```
 
 ---
@@ -79,15 +80,15 @@ This can be rough. It may be incomplete or different from your final solution.
 You may write pseudocode, a flowchart idea, or step-by-step thinking.
 
 ```text
-สร้าง dict ซ้อน dict โดยให้ชั้นแรกเป็นต้นทางและชั้นที่สองเป็นปลายทาง
-โดย dict ชั้นที่สองให้เก็บค่าธรรมเนียมเริ่มต้นกับค่าธรรมเนียมน้ำหนัก
-รับ input จากนั้น split แล้วเก็บไว้ในตัวแปร start (ต้นทาง), และ dest (ปลายทาง)
-รับค่าน้ำหนักพัสดุ
-จากนั้นให้เช็กว่า start เป็น key ของ dict เส้นทางชั้นแรก และเมื่อใช้ key ต้นทางเข้าไปยัง
-dict เส้นทางชั้นที่สองและ dest เป็น key ของ dict นั้น
-ถ้าถูกต้อง (เส้นทางโจทย์ระบุไว้) ให้นำค่าที่ได้จากการเข้า dict เส้นทางสองชั้นนั้น
-    มาคำนวณกับน้ำหนักของพัสดุแล้วปริ้น
-ถ้าผิด (โจทย์ไม่ได้ระบุว่ามีเส้นทางดังกล่าว) ให้ปริ้น Error
+รับค่า n (จำนวนคน), k (จำนวนส่งต่อ), t (ขโมย)
+สร้างตัวแปรบันทึกตำแหน่งของขวัญ (i)
+สร้างตัวแปรบันทึกจำนวนครั้งที่ของขวัญถูกพิจารณา (r)
+วนลูป เมื่อ r = 0 หรือ i != 1 และ i != t-1
+ในลูป ให้ i + k แล้วหารเก็บเศษเหลือด้วย n
+    เพื่อให้ตำแหน่งของของขวัญอยู่ภายในช่วง 0 ถึง n-1
+    ถ้า i = t-1 (ตำแหน่งของขโมย) r + 2
+    ถ้าไม่ r + 1
+ปริ้น r
 ```
 
 ---
@@ -107,7 +108,19 @@ Do not copy AI's explanation.
 Do not copy another person's explanation.
 
 ```text
-ไม่มีการเปลี่ยนแปลงเนื่องจากการโค้ดทำงานถูกต้องและสามารถผ่าน testcase ทั้งหมดได้
+เนื่องจากโค้ดทำงานไม่ถูกต้อง (มี testcase ที่ output ผิด)
+เลยมีการปรับเปลี่ยนการทำงานของโค้ดดังนี้:
+รับค่า n (จำนวนคน), k (จำนวนส่งต่อ), t (ขโมย)
+สร้างตัวแปรบันทึกตำแหน่งของขวัญ (i)
+สร้างตัวแปรบันทึกจำนวนครั้งที่ของขวัญถูกพิจารณา (r)
+วนลูป เมื่อ r = 0 หรือ i = 1
+ในลูป ถ้า i = t-1 (ตำแหน่งของขโมย) จะหยุดลูปทันที
+    เนื่องจากคนที่ t-1 ได้พิจารณาของขวัญแล้วขโมยได้พิจารณาของขวัญด้วย
+    จึงต้องให้ r + 1
+    แล้วหยุดลูป
+    แต่ถ้า i != t-1 ให้ r + 1 และ i + k แล้วหารเก็บเศษเหลือด้วย n
+    เพื่อให้ตำแหน่งของของขวัญอยู่ภายในช่วง 0 ถึง n-1
+ปริ้น r
 ```
 
 ---
@@ -133,20 +146,19 @@ Why I chose this case:
 Input:
 
 ```text
-BKK CNX
-2
+6 4 2
 ```
 
 Expected output:
 
 ```text
-70.00
+3
 ```
 
 Actual output:
 
 ```text
-70.00
+3
 ```
 
 Result:
@@ -166,20 +178,19 @@ Why I chose this case:
 Input:
 
 ```text
-UBP PKT
-3.33
+5 4 3
 ```
 
 Expected output:
 
 ```text
-273.10
+4
 ```
 
 Actual output:
 
 ```text
-273.10
+4
 ```
 
 Result:
@@ -193,26 +204,26 @@ Pass
 Why I chose this case:
 
 ```text
-ถ้าพัสดุไร้น้ำหนักก็ยังต้องจ่ายค่าธรรมเนียมเริ่มต้น
+ในเมื่อไม่ได้ส่งต่อของขวัญให้ใครแต่ขโมยอยู่ตำแหน่งของเจ้าของของขวัญ
+ขโมยจึงได้พิจารณาของขวัญชิ้นนั้น
 ```
 
 Input:
 
 ```text
-BKK PKT
-0
+1 0 1
 ```
 
 Expected output:
 
 ```text
-25.00
+1
 ```
 
 Actual output:
 
 ```text
-25.00
+1
 ```
 
 Result:
